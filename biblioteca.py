@@ -1,10 +1,51 @@
+from pprint import pprint
 def carica_da_file(file_path):
     """Carica i libri dal file"""
+
+    infile=open(file_path,"r", encoding='utf-8')
+    infile.readline()
+    biblioteca=[]
+    for riga in infile:
+        righe=riga.strip('\n').split(',')
+
+        libro={}
+        libro['titolo']=righe[0],
+        libro['autore']=righe[1],
+        libro['anno']=righe[2],
+        libro['pagine']=righe[3],
+        libro['sezione']=righe[4]
+        biblioteca.append(libro)
+
+
+    pprint(biblioteca)
+
+    infile.close()
+    return biblioteca
+
     # TODO
 
 
 def aggiungi_libro(biblioteca, titolo, autore, anno, pagine, sezione, file_path):
     """Aggiunge un libro nella biblioteca"""
+
+    libro={}
+    libro['titolo']=titolo
+    libro['autore']=autore
+    libro['anno']=anno
+    libro['pagine']=pagine
+    libro['sezione']=sezione
+    biblioteca.append(libro)
+
+    if libro in biblioteca:
+        ...
+    else :
+        biblioteca.append(libro)
+    pprint(biblioteca)
+    return biblioteca
+
+
+
+
     # TODO
 
 
@@ -21,6 +62,8 @@ def elenco_libri_sezione_per_titolo(biblioteca, sezione):
 def main():
     biblioteca = []
     file_path = "biblioteca.csv"
+    print(file_path)
+
 
     while True:
         print("\n--- MENU BIBLIOTECA ---")
