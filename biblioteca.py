@@ -9,10 +9,10 @@ def carica_da_file(file_path):
         righe=riga.strip('\n').split(',')
 
         libro={}
-        libro['titolo']=righe[0],
-        libro['autore']=righe[1],
-        libro['anno']=righe[2],
-        libro['pagine']=righe[3],
+        libro['titolo']=righe[0]
+        libro['autore']=righe[1]
+        libro['anno']=righe[2]
+        libro['pagine']=righe[3]
         libro['sezione']=righe[4]
         biblioteca.append(libro)
 
@@ -36,10 +36,7 @@ def aggiungi_libro(biblioteca, titolo, autore, anno, pagine, sezione, file_path)
     libro['sezione']=sezione
     biblioteca.append(libro)
 
-    if libro in biblioteca:
-        ...
-    else :
-        biblioteca.append(libro)
+
     pprint(biblioteca)
     return biblioteca
 
@@ -53,10 +50,28 @@ def cerca_libro(biblioteca, titolo):
     """Cerca un libro nella biblioteca dato il titolo"""
     # TODO
 
+    for libro in biblioteca:
+        if libro['titolo'].lower() == titolo.lower():
+            return libro
+    return None
+
+
+
 
 def elenco_libri_sezione_per_titolo(biblioteca, sezione):
     """Ordina i titoli di una data sezione della biblioteca in ordine alfabetico"""
     # TODO
+    titoli=[]
+    for libro in biblioteca:
+        if str(libro['sezione']).lower() == str(sezione).lower():
+            titoli.append(libro['titolo'])
+
+    if titoli:
+        titoli.sort(key=lambda t: t.lower())
+        return titoli
+    else:
+        return None
+
 
 
 def main():
